@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <title>Dota Picker MVP</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            function processFormDOTA() {
+                hero = {
+                    "id": $("#name").val()
+                }
+
+                $.ajax({
+                    method: "POST",
+                    url: "/good_with",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(hero)
+                })
+            }
+
+            function processFormDOTA2() {
+                hero = {
+                    "id": $("#name").val()
+                }
+
+                $.ajax({
+                    method: "POST",
+                    url: "/good_against",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(hero)
+                }).done(function() {
+                    console.log("TESTING 123");
+                })
+            }
+
+            function processFormDOTA3() {
+                $.ajax({
+                    method: "GET",
+                    url: "/all_heroes",
+                    dataType: "json",
+                    contentType: "application/json",
+                })
+            }
+
+            function processForm() {
+                employee = {
+                    "name": $("#name").val(),
+                    "hobbies": $("#hobbies").val(),
+                    "role": $("#role").val()
+                };
+
+                $.ajax({
+                    method: "POST",
+                    url: "/employees",
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(employee)
+                }).done(function( data ) {
+                    console.log("Data saved: " + data);
+                });
+                addEmployee(employee);
+
+                $("#name").val(""),
+                $("#hobbies").val(""),
+                $("#role").val("")
+            }
+
+            document.getElementById("gw").addEventListener("click", processFormDOTA);
+            document.getElementById("ga").addEventListener("click", processFormDOTA2);
+            document.getElementById("ah").addEventListener("click", processFormDOTA3);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <h1>Dota Picker MVP</h1>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <div class="form-group">
+                    <label for="name">Hero ID</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter id">
+                </div>
+                <div class="col-3 p-0" style="margin-bottom: 1rem">
+                    <button type="submit" id="gw" class="btn btn-primary">Good picks with hero</button>
+                </div>
+                <div class="col-3 p-0" style="margin-bottom: 1rem">
+                    <button type="submit" id="ga" class="btn btn-primary">Good picks against hero</button>
+                </div>
+                <div class="col-3 p-0">
+                    <button type="submit" id="ah" class="btn btn-primary">Show all heroes</button>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+</body>
+</html>
