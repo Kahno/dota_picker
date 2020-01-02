@@ -27,7 +27,7 @@ def all_heroes():
     cursor.execute(all_heroes_query)
     conn.commit()
 
-    data = {"heroes": [{"id": a, "name": b} for a, b, _, _, _ in cursor]}
+    data = {"heroes": [{"id": a, "name": b, "primary_attr": c} for a, b, c, _, _ in cursor]}
     js = json.dumps(data)
 
     cursor.close()

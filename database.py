@@ -18,7 +18,7 @@ create_synergy_with = """
 CREATE TABLE SYNERGY_WITH (
     syn_id INTEGER PRIMARY KEY AUTOINCREMENT,
     hero_id_1 INTEGER NOT NULL,
-    hero_id_2 INTEGER NOT NULL,
+    hero_id_2 INTEGER NOT NULL
 );
 """
 
@@ -26,7 +26,7 @@ create_synergy_against = """
 CREATE TABLE SYNERGY_AGAINST (
     syn_id INTEGER PRIMARY KEY AUTOINCREMENT,
     hero_id_1 INTEGER NOT NULL,
-    hero_id_2 INTEGER NOT NULL,
+    hero_id_2 INTEGER NOT NULL
 );
 """
 
@@ -62,7 +62,7 @@ insert_syn_data_2 = []
 
 for _, row in data.iterrows():
     insert_data.append(
-        "({}, {}, {}, {})".format(
+        "('{}', '{}', '{}', {})".format(
             row["name"],
             row["primary"],
             "MISSING",
@@ -90,7 +90,6 @@ for _, row in data.iterrows():
         if g_id == "nan":
             continue
         insert_syn_data_2.append("({}, {})".format(row["id"], g_id))
-        insert_syn_data_2.append("({}, {})".format(g_id, row["id"]))
 
 query_0 = insert_hero.format(
     ",\n".join(insert_data)
