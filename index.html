@@ -36,8 +36,6 @@
                     dataType: "json",
                     contentType: "application/json",
                     data: JSON.stringify(hero)
-                }).done(function() {
-                    console.log("TESTING 123");
                 })
             }
 
@@ -48,29 +46,6 @@
                     dataType: "json",
                     contentType: "application/json",
                 })
-            }
-
-            function processForm() {
-                employee = {
-                    "name": $("#name").val(),
-                    "hobbies": $("#hobbies").val(),
-                    "role": $("#role").val()
-                };
-
-                $.ajax({
-                    method: "POST",
-                    url: "/employees",
-                    dataType: 'json',
-                    contentType: 'application/json',
-                    data: JSON.stringify(employee)
-                }).done(function( data ) {
-                    console.log("Data saved: " + data);
-                });
-                addEmployee(employee);
-
-                $("#name").val(""),
-                $("#hobbies").val(""),
-                $("#role").val("")
             }
 
             document.getElementById("gw").addEventListener("click", processFormDOTA);
