@@ -2,7 +2,7 @@ import pandas as pd
 import sqlite3
 
 
-data = pd.read_csv("data.csv", names=["id", "name", "good_with", "good_against"])
+data = pd.read_csv("data.csv", names=["id", "name", "good_with", "good_against", "primary"])
 
 create_hero = """
 CREATE TABLE HEROES (
@@ -64,7 +64,7 @@ for _, row in data.iterrows():
     insert_data.append(
         "({}, {}, {}, {})".format(
             row["name"],
-            "MISSING",
+            row["primary"],
             "MISSING",
             row["id"]
         )
