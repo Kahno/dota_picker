@@ -6,8 +6,8 @@ Initial repo of DOTA picker project collaboration.
 
 To use the hero picker, follow the steps below:
 
-* create a new conda environment by running `conda create --name <env_name> -c anaconda --file requirements.txt`
-* activate conda environment: `conda activate <env_name>`
-* run `database.py` to setup the database with hero and synergy data
-* run `app.py` to start the backend
+* create new environment: `conda create -n <env_name> -c anaconda --file requirements.txt`
+* activate environment: `conda activate <env_name>`
+* setup database with hero and synergy data: `python database.py`
+* start backend: `python app.py`
 * follow instructions on the page
